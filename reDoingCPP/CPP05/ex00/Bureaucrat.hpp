@@ -18,7 +18,7 @@ class Bureaucrat
 
 		// Assignment operator
 		Bureaucrat& operator=(const Bureaucrat& other);
-		
+
 		// Getters
 		const std::string& getName() const;
 		int getGrade() const;
@@ -27,16 +27,18 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 
-		class GradeTooHighException : public std::exception {
-		public:
-			const char* what() const noexcept override;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const noexcept override;
 		};
 
-		class GradeTooLowException : public std::exception {
-		public:
-			const char* what() const noexcept override;
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const noexcept override;
 		};
-	};
+};
 
 #endif // BUREAUCRAT_HPP
 
