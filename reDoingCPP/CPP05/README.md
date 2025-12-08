@@ -21,7 +21,7 @@ Version: 17.0
 C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes" (source: Wikipedia).  
 The goal of these modules is to introduce you to Object-Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended for learning OOP. We have chosen C++ since it is derived from your old friend, C.
 
-Because this is a complex language, and in order to keep things simple, your code will comply with the C++11 standard.
+Because this is a complex language, and in order to keep things simple, your code will comply with the C++17 standard.
 
 We are aware that modern C++ is significantly different in many aspects. If you want to become a proficient C++ developer, it is up to you to go further after the 42 Common Core!
 
@@ -31,7 +31,7 @@ We are aware that modern C++ is significantly different in many aspects. If you 
 
 ### Compiling
 - Compile your code with `c++` and the flags `-Wall -Wextra -Werror`.
-- Your code should still compile if you add the flag `-std=c++11`.
+- Your code should still compile if you add the flag `-std=c++17`.
 
 ### Formatting and naming conventions
 - Exercise directories: `ex00`, `ex01`, ..., `exn`.
