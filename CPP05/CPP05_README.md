@@ -130,8 +130,3 @@ Submit the entire module directory, including all exercise subdirectories and th
 - Collaboration is encouraged, but all submitted work must be your own.
 - Seek help from instructors or peers if you encounter difficulties.
 Good luck and happy coding!
-
-### Module Author: OpenAI's ChatGPT
-
-
-

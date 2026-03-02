@@ -2,9 +2,17 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
-#include <stdexcept>
-#include <iostream>
+#include <exception>	// for std::exception
+#include <iosfwd>		// for std::ostream
 
+// #include <stdexcept>	// for std::runtime_error
+
+/**
+ * Bureaucrat invariants:
+ * - _name is immutable after construction.
+ * - _grade is always kept in the inclusive range [1, 150].
+ *   1 is the highest rank, 150 is the lowest rank.
+ */
 class Bureaucrat
 {
 	private:
@@ -17,47 +25,53 @@ class Bureaucrat
 
 	/*--- --- --- Constructors and Destructors --- --- ---*/
 
-		// default ctor and dtor
-		Bureaucrat();										// default constructor / ctor
-		~Bureaucrat();										// destructor / dtor
-
+		// default ctor and dtor -  not defined to prevent 
+		// Bureaucrat();										// default constructor / ctor
+		
 		// parameterized constructor
 		Bureaucrat(const std::string& name, int grade);
-		
-		// copy constructor
-		Bureaucrat(const Bureaucrat& other);
+
+		/**
+		 * Rule of Three:
+		 * If a class defines one of the following it should probably explicitly define all three:
+		 * 1. Destructor
+		 * 2. Copy Constructor
+		 * 3. Copy Assignment Operator
+		 */
+
+		//1. Destructor
+		~Bureaucrat();										// destructor / dtor
+
+		//2. Copy Constructor
+		Bureaucrat(const Bureaucrat& other);				// copy constructor - initializes a new object as a copy of an existing object
+
+		//3. Copy Assignment Operator
+		Bureaucrat& 		operator=(const Bureaucrat& other);	// copy assignment operator 
+		// ('= / assignment perator' overloading) - assigns the values from  existing object to another existing object (after both have been constructed)
+
 
 	/*--- --- --- Member Functions --- --- ---*/
 	
 		// Getters
-		const std::string	getName();
-		int					getGrade();
+		const std::string	&getName() const;
+		int					getGrade() const;
 
 		// Grade modification
 		void				incrementGrade();
 		void				decrementGrade();
-
-		// Operator overload
-		Bureaucrat&			operator=(const Bureaucrat& other);
 
 	/**--- --- --- Error Handling --- --- ---*/
 
 		class				GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Grade is too high!";
-				}
+				virtual const char* what() const throw();
 		};
 
 		class				GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Grade is too low!";
-				}
+				virtual const char* what() const throw();
 		};
 
 		// End of class Bureaucrat
@@ -65,8 +79,12 @@ class Bureaucrat
 
 // Overload the insertion operator for easy printing of Bureaucrat details
 // Non-member function to allow access to private members via friend declaration if needed
+	// but we can use public getters instead too, so friend declaration is not strictly necessary here
+	// Just keep in mind that we can also use friend instead of public getters
+	// if we want to access private members directly without exposing them through public methods
+	// since its not a concern here, we can use public getters instead of friend.
 // This function enables usage like: std::cout << bureaucrat;
-std::ostream& operator<<(std::ostream& os, Bureaucrat& bureaucrat);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif // BUREAUCRAT_HPP
 

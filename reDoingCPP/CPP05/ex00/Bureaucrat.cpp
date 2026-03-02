@@ -2,6 +2,9 @@
 
 									/* --- Constructor & Destructor --- */
 
+// Default Constructor
+Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150) {}
+
 // Constructor
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
 {

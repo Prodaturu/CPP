@@ -1,23 +1,36 @@
-NAME = bureaucrat
+# Final executable name for ex00.
+NAME = ex00
+
+# Source and object files for this exercise.
 SRCS = Bureaucrat.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
+
+# Compiler and flags:
+# - Wall/Wextra/Werror enforce strict compilation.
+# - std=c++11 matches your campus setup.
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 
+# Default target: build everything.
 all: $(NAME)
 
+# Link object files into the final executable.
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
+# Generic compilation rule: any .cpp -> .o
 %.o: %.cpp		
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Remove intermediate build artifacts.
 clean:
 	rm -f $(OBJS)
 
+# Remove intermediates + final executable.
 fclean: clean
 	rm -f $(NAME)
 
+# Full rebuild from scratch.
 re: fclean all
 
 .PHONY: all clean fclean re
@@ -30,7 +43,7 @@ re: fclean all
 # This Makefile is designed for building a simple C++ project (CPP05/ex00).
 #
 # Targets:
-#   all      : Builds the project executable 'megaphone' from source files.
+#   all      : Builds the project executable 'ex00' from source files.
 #   $(NAME)  : Links object files to create the final executable.
 #   %.o      : Compiles each .cpp source file into a corresponding .o object file.
 #   clean    : Removes all object files (.o) from the directory.
@@ -38,11 +51,11 @@ re: fclean all
 #   re       : Rebuilds the project by running 'fclean' followed by 'all'.
 #
 # Variables:
-#   NAME     : Name of the final executable (megaphone).
+#   NAME     : Name of the final executable (ex00).
 #   SRCS     : List of source files (.cpp).
 #   OBJS     : List of object files (.o) generated from SRCS.
 #   CXX      : C++ compiler (c++).
-#   CXXFLAGS : Compiler flags for warnings and C++98 standard.
+#   CXXFLAGS : Compiler flags for warnings and C++11 standard.
 #
 # Notes:
 #   - Pattern rules are used for compiling source files to object files.

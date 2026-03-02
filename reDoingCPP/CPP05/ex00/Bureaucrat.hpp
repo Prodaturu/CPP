@@ -31,7 +31,7 @@ class Bureaucrat
 
 		// Exception classes
 		// The GradeTooHighException is called
-			// which overrides the what() method from std::exception to provide a custom error message.
+		// which overrides the what() method from std::exception to provide a custom error message
 		class GradeTooHighException : public std::exception
 		{
 			public:
