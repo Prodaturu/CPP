@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex00 - Bureaucrat.hpp)
+- Class invariants: a Bureaucrat must always keep grade in [1, 150].
+- Immutable data member: _name is const, so it can only be initialized, never reassigned.
+- Orthodox Canonical Form basics: ctor, dtor, copy ctor, copy assignment.
+- Nested exception classes: custom error types scoped inside Bureaucrat.
+*/
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 

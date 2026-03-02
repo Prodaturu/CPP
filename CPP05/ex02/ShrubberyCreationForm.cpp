@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - ShrubberyCreationForm.cpp)
+- Demonstrates concrete execute() override with real side effect (file creation/writing).
+- Reuses base precondition checks via validateExecution().
+- Shows safe file-open validation before performing write operations.
+*/
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>

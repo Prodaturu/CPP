@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - Bureaucrat.hpp)
+- Abstraction upgrade: Bureaucrat now works with AForm (abstract base), not concrete Form.
+- New behavior executeForm() adds execution orchestration responsibility.
+- Polymorphic collaboration allows Bureaucrat to work with multiple form types uniformly.
+*/
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 

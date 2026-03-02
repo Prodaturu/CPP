@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex00 - main.cpp)
+- Test harness pattern: runCase() isolates scenarios so one exception does not stop all tests.
+- Boundary-value testing: explicitly test grade 1 and 150 edge behavior.
+- Exception handling in caller: catch std::exception to display failure reasons.
+*/
 #include "Bureaucrat.hpp"
 #include <iostream>
 

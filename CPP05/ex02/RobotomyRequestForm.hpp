@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - RobotomyRequestForm.hpp)
+- Concrete specialization with fixed grades (72 sign, 45 execute).
+- Encapsulates target identity while inheriting shared form mechanics from AForm.
+- Action semantics include randomized outcome requirement (50% success target).
+*/
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 

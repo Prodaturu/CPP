@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex02 - AForm.hpp)
+- Abstract base class design with pure virtual execute().
+- Shared policy in base class: signed state + sign/execute grade thresholds.
+- Protected helper (validateExecution) lets derived classes reuse gatekeeping logic.
+- Custom exception hierarchy adds "not signed" execution failure case.
+*/
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
@@ -39,6 +46,22 @@ class AForm
 		// Try to sign this form with a bureaucrat.
 		void				beSigned(const Bureaucrat& bureaucrat);
 
+		/**
+		 * Pure virtual function syntax:
+		 * `virtual void execute(...) const = 0;`
+		 *
+		 * Breakdown:
+		 * - `virtual` means calls can be resolved at runtime through base references/pointers.
+		 * - `= 0` makes this a pure virtual function (no base implementation here).
+		 * - Any class containing at least one pure virtual function becomes an abstract class.
+		 * - Abstract classes cannot be instantiated directly:
+		 *     AForm f(...);  // not allowed
+		 * - Derived classes must implement this exact function signature to become concrete.
+		 *
+		 * Why here:
+		 * In ex02, AForm represents a generic interface/contract for all concrete forms.
+		 * Each form has different action logic, so execute() is forced in derived classes.
+		 */
 		// Each concrete form implements its own execution behavior.
 		virtual void		execute(Bureaucrat const& executor) const = 0;
 

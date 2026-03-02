@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - RobotomyRequestForm.cpp)
+- Override execute() with stochastic behavior (rand-based 50% success/failure).
+- Preserves shared authorization checks via base-class validateExecution().
+- Illustrates action reporting through console output for both possible outcomes.
+*/
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>

@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - PresidentialPardonForm.cpp)
+- Simple execute() override demonstrates specialization via message-only action.
+- Keeps business action tiny by reusing AForm permission checks first.
+- Reinforces "inherit shared policy, customize effect" design pattern.
+*/
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>

@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex02 - AForm.cpp)
+- Base-class constructor enforces policy constraints shared by all derived forms.
+- Virtual destructor ensures safe cleanup through base-class pointers/references.
+- Template-method style support: validateExecution() centralizes common prechecks.
+- Derived forms only implement action-specific logic; base handles permission checks.
+*/
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>

@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex01 - main.cpp)
+- Integration testing between two classes (Bureaucrat <-> Form).
+- Positive and negative path testing for signing workflow.
+- Constructor validation tests for form grade boundaries.
+- Reusable runCase() pattern keeps test output readable and resilient.
+*/
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <iostream>

@@ -1,3 +1,9 @@
+# Concept Notes (ex00 - Makefile)
+# - Variable-driven build setup (NAME, SRCS, OBJS) keeps build config maintainable.
+# - Pattern rule %.o: %.cpp generalizes compilation for each source file.
+# - Standard 42 targets: all, clean, fclean, re.
+# - Strict flags improve code quality by turning warnings into errors.
+
 # Final executable name for ex00.
 NAME = ex00
 

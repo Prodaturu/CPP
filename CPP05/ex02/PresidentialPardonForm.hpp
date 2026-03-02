@@ -1,3 +1,8 @@
+/*
+Concept Notes (ex02 - PresidentialPardonForm.hpp)
+- Concrete specialization with strictest grades among provided forms (25 sign, 5 execute).
+- Target-focused derived class that keeps execution behavior separate from shared checks.
+*/
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 

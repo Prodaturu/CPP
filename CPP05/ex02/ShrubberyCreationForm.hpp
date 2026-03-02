@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - ShrubberyCreationForm.hpp)
+- Concrete inheritance from AForm with fixed policy grades (145 sign, 137 execute).
+- Adds target-specific state used by this form's action.
+- Introduces file-related custom exception for execution side effects.
+*/
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 

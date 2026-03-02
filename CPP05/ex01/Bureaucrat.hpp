@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex01 - Bureaucrat.hpp)
+- Forward declaration (class Form) reduces include coupling and avoids circular includes.
+- Cross-class behavior: Bureaucrat now collaborates with Form via signForm().
+- Class invariants and canonical form from ex00 are reused and extended.
+*/
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 

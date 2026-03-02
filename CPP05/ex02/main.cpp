@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex02 - main.cpp)
+- End-to-end polymorphic testing with three concrete AForm implementations.
+- Execution lifecycle testing: unsigned execute failure, low-grade failures, success cases.
+- Random behavior demonstration for robotomy using seeded std::rand().
+- Scenario-driven tests remain isolated through reusable runCase() wrapper.
+*/
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"

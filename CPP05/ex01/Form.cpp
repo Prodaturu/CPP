@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex01 - Form.cpp)
+- Constructor-level validation keeps every Form instance valid from birth.
+- Partial assignment pattern: const members cannot be reassigned, only mutable state is copied.
+- Interaction rule: beSigned() checks bureaucrat grade threshold.
+- Rich object logging with operator<< for debugging and tests.
+*/
 #include "Form.hpp"
 #include <iostream>
 

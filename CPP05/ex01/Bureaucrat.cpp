@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex01 - Bureaucrat.cpp)
+- Dependency expansion: Bureaucrat now uses Form behavior through Form.hpp.
+- Responsibility split: Bureaucrat delegates signing rules to Form::beSigned().
+- User-facing error reporting: signForm() catches exceptions and prints clear outcomes.
+*/
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <iostream>

@@ -1,3 +1,9 @@
+/*
+Concept Notes (ex02 - Bureaucrat.cpp)
+- Runtime polymorphism in action: executeForm() calls virtual AForm::execute().
+- Consistent UX layer: Bureaucrat prints explicit success/failure for sign and execute attempts.
+- Exception boundaries remain centralized at caller-facing methods.
+*/
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include <iostream>

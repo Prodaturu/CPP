@@ -1,3 +1,8 @@
+# Concept Notes (ex02 - Makefile)
+# - Build graph now includes abstract base + multiple concrete derived classes.
+# - Single executable links all polymorphic form implementations.
+# - Standard target lifecycle stays consistent across exercises.
+
 # Final executable name follows exercise directory name.
 NAME = ex02
 

@@ -1,3 +1,10 @@
+/*
+Concept Notes (ex01 - Form.hpp)
+- New domain object: Form with private immutable policy fields.
+- Encapsulation of permissions: sign grade and execute grade are owned by Form.
+- Interface contract: beSigned() validates caller rank and may throw.
+- Symmetric exception model with Bureaucrat (too high / too low grades).
+*/
 #ifndef FORM_HPP
 #define FORM_HPP
 

@@ -1,3 +1,8 @@
+# Concept Notes (ex01 - Makefile)
+# - Multi-file linking introduces form object code into final executable.
+# - OBJS auto-derivation from SRCS scales as project grows.
+# - Same clean/fclean/re flow preserves predictable build lifecycle.
+
 # Final executable name requested by exercise directory naming convention.
 NAME = ex01
 

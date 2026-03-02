@@ -1,3 +1,11 @@
+/*
+Concept Notes (ex00 - Bureaucrat.cpp)
+- Initializer list usage for efficient construction and const member initialization.
+- Runtime validation in constructor to enforce class invariants.
+- Grade movement semantics: lower number = higher rank.
+- Exception polymorphism: overriding what() from std::exception.
+- Non-member stream operator overload for printable object state.
+*/
 #include "Bureaucrat.hpp"
 #include <iostream>
 
