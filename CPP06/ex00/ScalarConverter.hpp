@@ -13,7 +13,7 @@ class ScalarConverter
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter();
-
+		
 	public:
 		// Detect input literal type, convert it, and print char/int/float/double.
 		static void convert(const std::string& literal);
