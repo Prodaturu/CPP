@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+// Entry point for ex00:
+// expects exactly one literal argument and delegates conversion/printing.
 int main(int argc, char** argv)
 {
 	if (argc != 2)

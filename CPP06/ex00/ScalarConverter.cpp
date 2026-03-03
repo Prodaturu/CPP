@@ -10,6 +10,8 @@
 #include <limits>
 #include <sstream>
 
+// Intentionally non-instantiable class: private constructors/destructor are defined
+// to satisfy the linker if they are ever referenced internally.
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter& other) { (void)other; }
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
@@ -19,6 +21,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 }
 ScalarConverter::~ScalarConverter() {}
 
+// Helpers to recognize subject-mandated pseudo literals.
 static bool isPseudoDouble(const std::string& s)
 {
 	return s == "nan" || s == "+inf" || s == "-inf";
@@ -29,6 +32,7 @@ static bool isPseudoFloat(const std::string& s)
 	return s == "nanf" || s == "+inff" || s == "-inff";
 }
 
+// Accepts single printable char (e.g. a) or quoted char (e.g. 'a').
 static bool isCharLiteral(const std::string& s)
 {
 	if (s.length() == 1 && !std::isdigit(static_cast<unsigned char>(s[0])))
@@ -38,6 +42,7 @@ static bool isCharLiteral(const std::string& s)
 	return false;
 }
 
+// Integer form: optional sign + one or more digits.
 static bool isIntLiteral(const std::string& s)
 {
 	if (s.empty())
@@ -55,6 +60,8 @@ static bool isIntLiteral(const std::string& s)
 	return true;
 }
 
+// Float form must end with 'f'. We parse the numeric prefix with strtod
+// to validate syntax while keeping C++98 compatibility.
 static bool isFloatLiteral(const std::string& s)
 {
 	if (s.length() < 2 || s[s.length() - 1] != 'f')
@@ -67,6 +74,7 @@ static bool isFloatLiteral(const std::string& s)
 	return errno != ERANGE && end && *end == '\0';
 }
 
+// Double form is a generic decimal string (plus pseudo literals handled above).
 static bool isDoubleLiteral(const std::string& s)
 {
 	if (isPseudoDouble(s))
@@ -77,6 +85,10 @@ static bool isDoubleLiteral(const std::string& s)
 	return errno != ERANGE && end && *end == '\0';
 }
 
+// Keep output formatting close to subject examples:
+// - integral values show one decimal place (42.0 / 42.0f)
+// - fractional values keep precision
+// - pseudo literals are printed explicitly.
 static std::string formatFloating(double value, bool asFloat)
 {
 	if (std::isnan(value))
@@ -102,6 +114,7 @@ void ScalarConverter::convert(const std::string& literal)
 {
 	double value;
 
+	// 1) Detect input kind and normalize into one common intermediate: double.
 	if (isCharLiteral(literal))
 	{
 		char c = literal.length() == 1 ? literal[0] : literal[1];
@@ -126,6 +139,7 @@ void ScalarConverter::convert(const std::string& literal)
 		return;
 	}
 
+	// 2) Print char conversion with display/range checks.
 	std::cout << "char: ";
 	if (std::isnan(value) || std::isinf(value)
 		|| value < std::numeric_limits<char>::min()
@@ -142,6 +156,7 @@ void ScalarConverter::convert(const std::string& literal)
 			std::cout << "Non displayable" << std::endl;
 	}
 
+	// 3) Print int conversion with NaN/Inf/overflow guards.
 	std::cout << "int: ";
 	if (std::isnan(value) || std::isinf(value)
 		|| value < static_cast<double>(INT_MIN)
@@ -150,6 +165,7 @@ void ScalarConverter::convert(const std::string& literal)
 	else
 		std::cout << static_cast<int>(value) << std::endl;
 
+	// 4) Float and double are always printable (including special values).
 	std::cout << "float: " << formatFloating(static_cast<float>(value), true) << std::endl;
 	std::cout << "double: " << formatFloating(value, false) << std::endl;
 }

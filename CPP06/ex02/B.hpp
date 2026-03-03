@@ -3,6 +3,7 @@
 
 #include "Base.hpp"
 
+// Concrete runtime type used for identification tests.
 class B : public Base
 {
 };

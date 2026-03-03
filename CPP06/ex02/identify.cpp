@@ -6,6 +6,7 @@
 #include <exception>
 #include <iostream>
 
+// Randomly build one derived type and return it via Base pointer.
 Base* generate(void)
 {
 	int pick = std::rand() % 3;
@@ -16,6 +17,7 @@ Base* generate(void)
 	return new C();
 }
 
+// Pointer version: failed dynamic_cast to pointer yields NULL.
 void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p) != NULL)
@@ -26,6 +28,7 @@ void identify(Base* p)
 		std::cout << "C" << std::endl;
 }
 
+// Reference version: failed dynamic_cast throws, so we probe in sequence.
 void identify(Base& p)
 {
 	try

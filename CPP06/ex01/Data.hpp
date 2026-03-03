@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Non-empty payload required by the subject so pointer identity is meaningful.
 struct Data
 {
 	int id;

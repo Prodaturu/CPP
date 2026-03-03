@@ -12,8 +12,10 @@ void identify(Base& p);
 
 int main()
 {
+	// Seed rand once so each run produces a different A/B/C sequence.
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
+	// Exercise both identify overloads for multiple generated objects.
 	for (int i = 0; i < 10; i++)
 	{
 		Base* instance = generate();

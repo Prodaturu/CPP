@@ -5,6 +5,8 @@
 #include <stdint.h>
 #include "Data.hpp"
 
+// Utility class for raw pointer <-> integer conversions.
+// It is intentionally non-instantiable and only exposes static methods.
 class Serializer
 {
 	private:
