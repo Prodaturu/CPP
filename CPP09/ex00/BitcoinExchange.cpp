@@ -129,63 +129,76 @@ void BitcoinExchange::processInput(const std::string &inputPath) const
 	}
 
 	std::string line;
-	// First line is expected to be a header (e.g. "date | value").
+	// First line is expected to be the exact header "date | value".
 	if (!std::getline(file, line))
 		return;
 
-	// Evaluate each entry independently so one bad line doesn't stop processing.
-	while (std::getline(file, line))
+	bool processCurrentLine = (line != "date | value");
+	// If header is missing/malformed, do not silently drop the first line.
+	// Process it as data so user gets explicit feedback.
+	while (true)
 	{
-		if (line.empty())
-			continue;
-
-		// Strict separator expected by subject examples.
-		std::size_t pipePos = line.find(" | ");
-		if (pipePos == std::string::npos)
+		if (processCurrentLine)
 		{
-			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
-		}
-
-		std::string date = line.substr(0, pipePos);
-		std::string valueStr = line.substr(pipePos + 3);
-
-		double amount;
-		// Validate date and numeric payload.
-		if (!isValidDate(date) || !parseValue(valueStr, amount))
-		{
-			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
-		}
-
-		// Subject constraints for amount range.
-		if (amount < 0.0)
-		{
-			std::cerr << "Error: not a positive number." << std::endl;
-			continue;
-		}
-		if (amount > 1000.0)
-		{
-			std::cerr << "Error: too large a number." << std::endl;
-			continue;
-		}
-
-		// Find exact date or closest previous date in ordered map.
-		std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
-		if (it == _rates.end() || it->first != date)
-		{
-			// No earlier data available.
-			if (it == _rates.begin())
+			if (!line.empty())
 			{
-				std::cerr << "Error: bad input => " << line << std::endl;
-				continue;
+				// Strict separator expected by subject examples.
+				std::size_t pipePos = line.find(" | ");
+				if (pipePos == std::string::npos)
+				{
+					std::cerr << "Error: bad input => " << line << std::endl;
+				}
+				else
+				{
+					std::string date = line.substr(0, pipePos);
+					std::string valueStr = line.substr(pipePos + 3);
+
+					double amount;
+					// Validate date and numeric payload.
+					if (!isValidDate(date) || !parseValue(valueStr, amount))
+					{
+						std::cerr << "Error: bad input => " << line << std::endl;
+					}
+					// Subject constraints for amount range.
+					else if (amount < 0.0)
+					{
+						std::cerr << "Error: not a positive number." << std::endl;
+					}
+					else if (amount > 1000.0)
+					{
+						std::cerr << "Error: too large a number." << std::endl;
+					}
+					else
+					{
+						// Find exact date or closest previous date in ordered map.
+						std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
+						if (it == _rates.end() || it->first != date)
+						{
+							// No earlier data available.
+							if (it == _rates.begin())
+							{
+								std::cerr << "Error: bad input => " << line << std::endl;
+							}
+							else
+							{
+								// Step back to latest rate before requested date.
+								--it;
+								double result = amount * it->second;
+								std::cout << date << " => " << amount << " = " << result << std::endl;
+							}
+						}
+						else
+						{
+							double result = amount * it->second;
+							std::cout << date << " => " << amount << " = " << result << std::endl;
+						}
+					}
+				}
 			}
-			// Step back to latest rate before requested date.
-			--it;
 		}
 
-		double result = amount * it->second;
-		// Required output format.
-		std::cout << date << " => " << amount << " = " << result << std::endl;
+		if (!std::getline(file, line))
+			break;
+		processCurrentLine = true;
 	}
 }
