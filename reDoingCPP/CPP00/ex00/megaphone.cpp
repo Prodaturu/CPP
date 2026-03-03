@@ -4,7 +4,7 @@
 int main(int argc, char **argv)
 {
 	// Only one argument allowed - do argument check
-	if (argc == 1)
+	if (argc != 2)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 		{
 			// toupper() returns an int
 			// so the output from toupper is casted to char
-			// before giving it as an input ot std::cout
+			// before giving it as an input to std::cout
 			std::cout << static_cast<char>( std::toupper(argv[i][j]) );
 		}
 		// print a space between separate argv entries so words don't concatenate
