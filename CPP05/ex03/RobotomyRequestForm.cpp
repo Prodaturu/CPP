@@ -11,6 +11,11 @@ Concept Notes (ex02 - RobotomyRequestForm.cpp)
 
 /* --- --- --- Constructors & Canonical Definitions --- --- --- */
 
+RobotomyRequestForm::RobotomyRequestForm()
+	: AForm("RobotomyRequestForm", 72, 45), _target("default")
+{
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 	: AForm("RobotomyRequestForm", 72, 45), _target(target)
 {

@@ -28,6 +28,8 @@ Concept Notes (ex00 - Bureaucrat.cpp)
 
 /* --- --- --- Constructors & Cannonical Deinitions --- --- --- */
 
+Bureaucrat::Bureaucrat(void) : _name("DEFAULT_NAME"), _grade(67) {}
+
 // parameterized constructor //
 // initializes _name and _grade using initializer list
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)

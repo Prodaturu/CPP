@@ -31,6 +31,7 @@ class Form
 
 	public:
 		// Orthodox Canonical Form
+		Form();
 		Form(const std::string& name, int signGrade, int executeGrade);
 		~Form();
 		Form(const Form& other);

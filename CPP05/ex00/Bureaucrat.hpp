@@ -33,7 +33,7 @@ class Bureaucrat
 	/*--- --- --- Constructors and Destructors --- --- ---*/
 
 		// default ctor and dtor -  not defined to prevent 
-		// Bureaucrat();										// default constructor / ctor
+		Bureaucrat();										// default constructor / ctor
 		
 		// parameterized constructor
 		Bureaucrat(const std::string& name, int grade);

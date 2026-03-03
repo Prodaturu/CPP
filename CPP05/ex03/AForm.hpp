@@ -32,6 +32,7 @@ class AForm
 
 	public:
 		// Orthodox Canonical Form for base class.
+		AForm();
 		AForm(const std::string& name, int signGrade, int executeGrade);
 		virtual ~AForm();
 		AForm(const AForm& other);

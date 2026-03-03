@@ -10,6 +10,11 @@ Concept Notes (ex01 - Form.cpp)
 
 /* --- --- --- Constructors & Canonical Definitions --- --- --- */
 
+Form::Form()
+	: _name("DefaultForm"), _isSigned(false), _signGrade(150), _executeGrade(150)
+{
+}
+
 // Main constructor:
 // - starts unsigned
 // - validates required grades immediately

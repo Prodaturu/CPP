@@ -10,6 +10,11 @@ Concept Notes (ex02 - ShrubberyCreationForm.cpp)
 
 /* --- --- --- Constructors & Canonical Definitions --- --- --- */
 
+ShrubberyCreationForm::ShrubberyCreationForm()
+	: AForm("ShrubberyCreationForm", 145, 137), _target("default")
+{
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {

@@ -11,6 +11,11 @@ Concept Notes (ex02 - AForm.cpp)
 
 /* --- --- --- Constructors & Canonical Definitions --- --- --- */
 
+AForm::AForm()
+	: _name("DefaultAForm"), _isSigned(false), _signGrade(150), _executeGrade(150)
+{
+}
+
 AForm::AForm(const std::string& name, int signGrade, int executeGrade)
 	: _name(name), _isSigned(false), _signGrade(signGrade), _executeGrade(executeGrade)
 {

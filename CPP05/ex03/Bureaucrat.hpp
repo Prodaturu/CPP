@@ -28,6 +28,7 @@ class Bureaucrat
 
 	public:
 		// Orthodox Canonical Form
+		Bureaucrat();
 		Bureaucrat(const std::string& name, int grade);
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat& other);

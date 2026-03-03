@@ -27,6 +27,12 @@ Concept Notes (ex02 - Bureaucrat.cpp)
 
 /* --- --- --- Constructors & Cannonical Deinitions --- --- --- */
 
+// default constructor //
+// initializes safe default values
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
+{
+}
+
 // parameterized constructor //
 // initializes _name and _grade using initializer list
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
@@ -38,13 +44,6 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
-
-// default constructor //
-// initializes _name to "fillerName" and _grade to 150
-// Bureaucrat::Bureucrat() : _name("fillerName"), _grade(150)
-// {
-// 	// default constructor body can be empty since members are initialized above
-// }
 
 // 1. destructor //
 // no special cleanup needed in this case as no dynamic memory is used

@@ -10,6 +10,11 @@ Concept Notes (ex02 - PresidentialPardonForm.cpp)
 
 /* --- --- --- Constructors & Canonical Definitions --- --- --- */
 
+PresidentialPardonForm::PresidentialPardonForm()
+	: AForm("PresidentialPardonForm", 25, 5), _target("default")
+{
+}
+
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
 	: AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
